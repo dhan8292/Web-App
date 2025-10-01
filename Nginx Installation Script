@@ -1,0 +1,13 @@
+#!/bin/bash
+# Script runs during CodeDeploy's BeforeInstall hook
+echo "Starting BeforeInstall hook: Installing Nginx and stopping service..."
+
+# Install Nginx (using yum for Amazon Linux/RHEL)
+# If using Ubuntu/Debian, replace 'yum install' with 'apt update && apt install nginx -y'
+yum update -y
+yum install nginx -y
+
+# Stop the service before deployment to ensure no files are locked
+service nginx stop
+
+echo "Nginx installation complete and service stopped."

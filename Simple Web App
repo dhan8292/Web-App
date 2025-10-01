@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS CI/CD Pipeline Deployment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-xl shadow-2xl max-w-lg w-full text-center">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">Pipeline Deployment Successful!</h1>
+        <p class="text-xl text-indigo-600 mb-6">Deployed via CodeCommit → CodeBuild → CodeDeploy → CodePipeline</p>
+        
+        <div class="text-sm text-gray-500 mt-8">
+            <p>This page is hosted on an EC2 instance, served by Nginx, and deployed automatically.</p>
+            <p class="mt-2 text-xs">Deployment Timestamp: <span id="timestamp" class="font-mono text-gray-700">Loading...</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Display the deployment time (which is the client's current time on load)
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>

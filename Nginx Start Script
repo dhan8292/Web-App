@@ -1,0 +1,7 @@
+#!/bin/bash
+# Script runs during CodeDeploy's ApplicationStart hook
+echo "Starting ApplicationStart hook: Starting Nginx..."
+
+# Start the Nginx service
+service nginx start
+echo "Nginx service started."

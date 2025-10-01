@@ -1,0 +1,27 @@
+version: 0.2
+# Defines the phases CodeBuild runs. Since this is a static HTML app,
+# the primary job is packaging the files for CodeDeploy.
+
+phases:
+  install:
+    # No dependencies to install for a simple static deployment
+    commands:
+    - echo Installing phase started...
+  pre_build:
+    commands:
+    - echo Pre-build phase started...
+  build:
+    commands:
+    # Simple command to indicate the build step is running
+    - echo Build phase started: Packaging artifact...
+  post_build:
+    commands:
+    - echo Post-build phase started...
+    - echo Build complete. Artifacts packaged.
+
+artifacts:
+  # The entire repository content (including appspec.yml and scripts folder)
+  # must be packaged for CodeDeploy to work correctly.
+  files:
+  - '**/*'
+  discard-paths: no

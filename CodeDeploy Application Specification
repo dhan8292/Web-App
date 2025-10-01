@@ -1,0 +1,28 @@
+version: 0.0
+# Specify the operating system of the target EC2 instance
+os: linux
+
+files:
+# Map the source files (all files in the artifact root) to the destination.
+# /var/www/html is the default location for static files on many Linux web servers (like Nginx).
+- source: /
+  destination: /var/www/html/
+
+hooks:
+  # 1. BeforeInstall: Install Nginx web server and stop the old service (if running).
+  BeforeInstall:
+  - location: scripts/install_dependencies.sh
+    timeout: 300
+    runas: root
+
+  # 2. ApplicationStart: Start the Nginx service after the files are copied.
+  ApplicationStart:
+  - location: scripts/start_server.sh
+    timeout: 60
+    runas: root
+
+  # 3. ValidateService: Optional health check. Not strictly necessary for this simple app but good practice.
+  ValidateService:
+  - location: scripts/validate_service.sh
+    timeout: 60
+    runas: root
