@@ -1,0 +1,10 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - mkdir -p /tmp/webapp
+      - cp index.html /tmp/webapp/
+artifacts:
+  files:
+    - index.html
+  base-directory: /tmp/webapp
